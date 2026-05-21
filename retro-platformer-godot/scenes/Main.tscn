@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ciurcm0h2qan6"]
+
+[node name="Main" type="Node" unique_id=86470714]
+
+[node name="CurrentScene" type="Node" parent="." unique_id=1062625312]
