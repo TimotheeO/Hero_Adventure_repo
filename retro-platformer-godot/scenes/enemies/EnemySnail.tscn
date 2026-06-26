@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_snail_walk.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdgy8"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71rhm"]
+atlas = ExtResource("2")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlwne"]
+atlas = ExtResource("2")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt41g"]
+atlas = ExtResource("2")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvj80"]
+atlas = ExtResource("2")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80nfw"]
+atlas = ExtResource("2")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8xnd"]
+atlas = ExtResource("2")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0777a"]
+atlas = ExtResource("2")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SF"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdgy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71rhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlwne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt41g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvj80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80nfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8xnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0777a")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="Shape"]
+size = Vector2(31, 23.5)
+
+[sub_resource type="RectangleShape2D" id="ShapeHurt"]
+size = Vector2(31, 23.5)
+
+[node name="EnemySnail" type="CharacterBody2D" unique_id=129287314]
+collision_layer = 4
+script = ExtResource("1")
+speed = 30.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=598878339]
+sprite_frames = SubResource("SF")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1052965070]
+position = Vector2(-0.5, 4.75)
+shape = SubResource("Shape")
+
+[node name="FloorCheck" type="RayCast2D" parent="." unique_id=2112498952]
+position = Vector2(16, 0)
+target_position = Vector2(0, 28)
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=797985516]
+collision_layer = 4
+collision_mask = 2
+
+[node name="HurtShape" type="CollisionShape2D" parent="HurtBox" unique_id=270147314]
+position = Vector2(-0.5, 4.75)
+shape = SubResource("ShapeHurt")

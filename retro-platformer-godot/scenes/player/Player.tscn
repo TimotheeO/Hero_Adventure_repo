@@ -1,3 +1,45 @@
 [gd_scene format=3 uid="uid://dyfdmvgl882xq"]
 
-[node name="Player" type="Node2D" unique_id=1017793050]
+[ext_resource type="Script" uid="uid://ceielk0nqein" path="res://scenes/player/player.gd" id="1_pgd"]
+[ext_resource type="Script" uid="uid://ddmtryejam6to" path="res://scenes/player/sword_hitbox.gd" id="2_sword"]
+[ext_resource type="Script" uid="uid://cxs6sp51f0pg7" path="res://scenes/player/bow.gd" id="3_bow"]
+[ext_resource type="PackedScene" uid="uid://carrowuid01" path="res://scenes/player/arrow.tscn" id="4_arrow"]
+
+[sub_resource type="RectangleShape2D" id="Shape_body"]
+size = Vector2(20, 30)
+
+[sub_resource type="RectangleShape2D" id="Shape_sword"]
+size = Vector2(26, 30)
+
+[node name="Player" type="CharacterBody2D" unique_id=777524884]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_pgd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=525923447]
+scale = Vector2(1.5, 1.5)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=709678489]
+limit_left = 0
+limit_top = 0
+limit_right = 3600
+limit_bottom = 360
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1641793310]
+shape = SubResource("Shape_body")
+
+[node name="SwordHitbox" type="Area2D" parent="." unique_id=820987874]
+position = Vector2(24, 0)
+collision_mask = 4
+monitoring = false
+script = ExtResource("2_sword")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox" unique_id=1788769442]
+shape = SubResource("Shape_sword")
+
+[node name="Bow" type="Node2D" parent="." unique_id=432956889]
+position = Vector2(10, 0)
+script = ExtResource("3_bow")
+arrow_scene = ExtResource("4_arrow")

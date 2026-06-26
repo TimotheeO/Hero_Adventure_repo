@@ -1,3 +1,361 @@
-[gd_scene format=3 uid="uid://cva3xsv4nlchb"]
+[gd_scene format=3 uid="uid://btyy1uccdlbet"]
 
-[node name="Level1" type="Node2D" unique_id=13908630]
+[ext_resource type="PackedScene" uid="uid://dyfdmvgl882xq" path="res://scenes/player/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cc6r4mouw3m86" path="res://scenes/collectibles/Coin.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cls1ilx37c8qe" path="res://scenes/collectibles/Star.tscn" id="4"]
+[ext_resource type="Script" uid="uid://bmho24xlbfesm" path="res://scenes/levels/level_base.gd" id="5"]
+[ext_resource type="Script" uid="uid://dubvjakd75pqr" path="res://scenes/levels/exit.gd" id="6"]
+[ext_resource type="Script" uid="uid://wjo80vfyikpt" path="res://scenes/levels/death_zone.gd" id="7"]
+[ext_resource type="Script" uid="uid://b3xuqjlqu01p8" path="res://scenes/ui/hud.gd" id="8"]
+[ext_resource type="Texture2D" uid="uid://r5iyadh26qas" path="res://assets/sprites/bg_forest_huge.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dpe3l8b7sitkr" path="res://assets/sprites/platform_tile.png" id="11"]
+[ext_resource type="PackedScene" uid="uid://bj7r0yofrnukc" path="res://scenes/enemies/EnemyBasic.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/EnemySnail.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://scenes/levels/MovingPlatform.tscn" id="15"]
+[ext_resource type="Texture2D" uid="uid://dasbumkxn5jgd" path="res://assets/sprites/seg_forest_small.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://ck2gma3n7c1fw" path="res://assets/sprites/seg_forest_med.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://dk1gk1i8768b2" path="res://assets/sprites/seg_forest_big.png" id="22"]
+
+[sub_resource type="RectangleShape2D" id="SG0"]
+size = Vector2(640, 35)
+
+[sub_resource type="RectangleShape2D" id="SG1"]
+size = Vector2(400, 34)
+
+[sub_resource type="RectangleShape2D" id="SG2"]
+size = Vector2(400, 35)
+
+[sub_resource type="RectangleShape2D" id="SG3"]
+size = Vector2(640, 34)
+
+[sub_resource type="RectangleShape2D" id="SG4"]
+size = Vector2(400, 34)
+
+[sub_resource type="RectangleShape2D" id="SG5"]
+size = Vector2(749.5, 36)
+
+[sub_resource type="RectangleShape2D" id="SP"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="SE"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="SD"]
+size = Vector2(8000, 40)
+
+[node name="Level1" type="Node2D" unique_id=72772985]
+script = ExtResource("5")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=922995790]
+z_index = -10
+position = Vector2(1800, 180)
+texture = ExtResource("9")
+
+[node name="Ground0" type="StaticBody2D" parent="." unique_id=1879125883]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground0" unique_id=773179541]
+position = Vector2(320, 340)
+texture = ExtResource("21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground0" unique_id=1002841137]
+position = Vector2(320, 346.5)
+shape = SubResource("SG0")
+
+[node name="Ground1" type="StaticBody2D" parent="." unique_id=1972948378]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground1" unique_id=1959683575]
+position = Vector2(960, 340)
+texture = ExtResource("20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1" unique_id=411943353]
+position = Vector2(960, 347)
+shape = SubResource("SG1")
+
+[node name="Ground2" type="StaticBody2D" parent="." unique_id=1367997241]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground2" unique_id=833358044]
+position = Vector2(1500, 340)
+texture = ExtResource("20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2" unique_id=211997318]
+position = Vector2(1500, 346.5)
+shape = SubResource("SG2")
+
+[node name="Ground3" type="StaticBody2D" parent="." unique_id=1521069634]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground3" unique_id=1430490697]
+position = Vector2(2075, 340)
+texture = ExtResource("21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3" unique_id=1765207080]
+position = Vector2(2075, 347)
+shape = SubResource("SG3")
+
+[node name="Ground4" type="StaticBody2D" parent="." unique_id=689272234]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground4" unique_id=572240840]
+position = Vector2(2660, 340)
+texture = ExtResource("20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4" unique_id=731229146]
+position = Vector2(2660, 347)
+shape = SubResource("SG4")
+
+[node name="Ground5" type="StaticBody2D" parent="." unique_id=1610932942]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground5" unique_id=1859128183]
+position = Vector2(3288, 339)
+scale = Vector2(0.83111113, 0.9999999)
+texture = ExtResource("22")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground5" unique_id=242636493]
+position = Vector2(3288.25, 346)
+shape = SubResource("SG5")
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=2118252015]
+position = Vector2(80, 285)
+
+[node name="Player" parent="." unique_id=2046167362 instance=ExtResource("1")]
+position = Vector2(80, 285)
+
+[node name="Plat0" type="StaticBody2D" parent="." unique_id=2131537127]
+
+[node name="Sprite2D" type="Sprite2D" parent="Plat0" unique_id=1926781194]
+position = Vector2(899, 270)
+texture = ExtResource("11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plat0" unique_id=88081603]
+position = Vector2(900, 270)
+shape = SubResource("SP")
+
+[node name="Plat1" type="StaticBody2D" parent="." unique_id=1461455769]
+
+[node name="Sprite2D" type="Sprite2D" parent="Plat1" unique_id=967083331]
+position = Vector2(1394, 207)
+texture = ExtResource("11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plat1" unique_id=417257258]
+position = Vector2(1395, 207)
+shape = SubResource("SP")
+
+[node name="Plat2" type="StaticBody2D" parent="." unique_id=745735474]
+
+[node name="Sprite2D" type="Sprite2D" parent="Plat2" unique_id=439003872]
+position = Vector2(1591, 167)
+texture = ExtResource("11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plat2" unique_id=211140540]
+position = Vector2(1593, 168)
+shape = SubResource("SP")
+
+[node name="Plat3" type="StaticBody2D" parent="." unique_id=2038256646]
+
+[node name="Sprite2D" type="Sprite2D" parent="Plat3" unique_id=94027802]
+position = Vector2(2571, 274)
+texture = ExtResource("11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plat3" unique_id=1627032555]
+position = Vector2(2570, 274)
+shape = SubResource("SP")
+
+[node name="Plat4" type="StaticBody2D" parent="." unique_id=850256004]
+
+[node name="Sprite2D" type="Sprite2D" parent="Plat4" unique_id=888256057]
+position = Vector2(2739, 272)
+texture = ExtResource("11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plat4" unique_id=1401963747]
+position = Vector2(2740, 273)
+shape = SubResource("SP")
+
+[node name="Plat5" type="StaticBody2D" parent="." unique_id=1370309015]
+
+[node name="Sprite2D" type="Sprite2D" parent="Plat5" unique_id=2014840573]
+position = Vector2(3033, 276)
+texture = ExtResource("11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plat5" unique_id=678250379]
+position = Vector2(3033, 277)
+shape = SubResource("SP")
+
+[node name="Plat6" type="StaticBody2D" parent="." unique_id=242241314]
+
+[node name="Sprite2D" type="Sprite2D" parent="Plat6" unique_id=1192328086]
+position = Vector2(3188, 243)
+texture = ExtResource("11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plat6" unique_id=644679783]
+position = Vector2(3189, 244)
+shape = SubResource("SP")
+
+[node name="MovingPlat0" parent="." unique_id=1204638374 instance=ExtResource("15")]
+position = Vector2(1850, 273)
+move_offset = Vector2(100, 0)
+duration = 1.6
+
+[node name="MovingPlat1" parent="." unique_id=1373820648 instance=ExtResource("15")]
+position = Vector2(1231, 285)
+move_offset = Vector2(0, -90)
+duration = 1.8
+
+[node name="Enemy0" parent="." unique_id=1482733963 instance=ExtResource("12")]
+position = Vector2(406, 310)
+
+[node name="Enemy1" parent="." unique_id=1137144044 instance=ExtResource("13")]
+position = Vector2(950, 309)
+
+[node name="Enemy2" parent="." unique_id=1237334372 instance=ExtResource("12")]
+position = Vector2(1050, 307)
+
+[node name="Enemy3" parent="." unique_id=603407716 instance=ExtResource("12")]
+position = Vector2(2000, 307)
+
+[node name="Enemy4" parent="." unique_id=1960044237 instance=ExtResource("13")]
+position = Vector2(2151, 308)
+
+[node name="Enemy5" parent="." unique_id=1882932546 instance=ExtResource("12")]
+position = Vector2(2784, 239)
+
+[node name="Enemy6" parent="." unique_id=915398220 instance=ExtResource("13")]
+position = Vector2(3300, 300)
+
+[node name="Coin0" parent="." unique_id=7127976 instance=ExtResource("3")]
+position = Vector2(320, 290)
+
+[node name="Coin1" parent="." unique_id=1559079497 instance=ExtResource("3")]
+position = Vector2(500, 290)
+
+[node name="Coin2" parent="." unique_id=1091914909 instance=ExtResource("3")]
+position = Vector2(700, 270)
+
+[node name="Coin3" parent="." unique_id=775358767 instance=ExtResource("3")]
+position = Vector2(900, 222)
+
+[node name="Coin4" parent="." unique_id=658297618 instance=ExtResource("3")]
+position = Vector2(902, 299)
+
+[node name="Coin5" parent="." unique_id=1478534051 instance=ExtResource("3")]
+position = Vector2(1230, 250)
+
+[node name="Coin6" parent="." unique_id=53727431 instance=ExtResource("3")]
+position = Vector2(1394, 173)
+
+[node name="Coin7" parent="." unique_id=928857034 instance=ExtResource("3")]
+position = Vector2(1592, 139)
+
+[node name="Coin8" parent="." unique_id=1059266424 instance=ExtResource("3")]
+position = Vector2(2080, 212)
+
+[node name="Coin9" parent="." unique_id=720665445 instance=ExtResource("3")]
+position = Vector2(2000, 290)
+
+[node name="Coin10" parent="." unique_id=1603873710 instance=ExtResource("3")]
+position = Vector2(2150, 290)
+
+[node name="Coin11" parent="." unique_id=1234297103 instance=ExtResource("3")]
+position = Vector2(2282, 291)
+
+[node name="Coin12" parent="." unique_id=443758785 instance=ExtResource("3")]
+position = Vector2(2572, 228)
+
+[node name="Coin13" parent="." unique_id=1119119965 instance=ExtResource("3")]
+position = Vector2(2741, 233)
+
+[node name="Coin14" parent="." unique_id=1883754571 instance=ExtResource("3")]
+position = Vector2(3078, 219)
+
+[node name="Coin15" parent="." unique_id=442180834 instance=ExtResource("3")]
+position = Vector2(3235, 180)
+
+[node name="Coin16" parent="." unique_id=283850961 instance=ExtResource("3")]
+position = Vector2(3361, 301)
+
+[node name="Star0" parent="." unique_id=43857896 instance=ExtResource("4")]
+position = Vector2(700, 240)
+
+[node name="Star1" parent="." unique_id=754534070 instance=ExtResource("4")]
+position = Vector2(1592, 114)
+star_index = 1
+
+[node name="Star2" parent="." unique_id=105620056 instance=ExtResource("4")]
+position = Vector2(2740, 210)
+star_index = 2
+
+[node name="Exit" type="Area2D" parent="." unique_id=1845743542]
+position = Vector2(3450, 280)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("6")
+
+[node name="Flag" type="ColorRect" parent="Exit" unique_id=468296644]
+offset_left = -4.0
+offset_top = -60.0
+offset_right = 4.0
+offset_bottom = 20.0
+color = Color(0.5, 0.35, 0.2, 1)
+
+[node name="FlagTop" type="ColorRect" parent="Exit" unique_id=367109517]
+offset_left = 4.0
+offset_top = -60.0
+offset_right = 44.0
+offset_bottom = -36.0
+color = Color(0.3, 0.9, 0.4, 1)
+
+[node name="ExitLabel" type="Label" parent="Exit" unique_id=1365118185]
+offset_left = -20.0
+offset_top = -82.0
+theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
+text = "ARRIVEE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=626720773]
+position = Vector2(1, 15)
+shape = SubResource("SE")
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=885066292]
+position = Vector2(1800, 430)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1104202342]
+shape = SubResource("SD")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1465528250]
+script = ExtResource("8")
+
+[node name="Margin" type="MarginContainer" parent="HUD" unique_id=147122245]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 14
+
+[node name="HBox" type="HBoxContainer" parent="HUD/Margin" unique_id=2145390305]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="LivesLabel" type="Label" parent="HUD/Margin/HBox" unique_id=841251732]
+layout_mode = 2
+text = "Vies 3"
+
+[node name="CoinsLabel" type="Label" parent="HUD/Margin/HBox" unique_id=1025320908]
+layout_mode = 2
+text = "Pieces 0"
+
+[node name="StarsLabel" type="Label" parent="HUD/Margin/HBox" unique_id=1937592242]
+layout_mode = 2
+text = "Etoiles 0/3"
+
+[node name="LevelLabel" type="Label" parent="HUD/Margin/HBox" unique_id=843824539]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Niveau 1"
+horizontal_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="HUD/Margin/HBox" unique_id=1237745570]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "00:00.00"
+horizontal_alignment = 2

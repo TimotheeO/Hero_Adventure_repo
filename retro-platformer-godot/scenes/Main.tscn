@@ -1,5 +1,4 @@
-[gd_scene format=3 uid="uid://ciurcm0h2qan6"]
-
-[node name="Main" type="Node" unique_id=86470714]
-
-[node name="CurrentScene" type="Node" parent="." unique_id=1062625312]
+[gd_scene load_steps=2 format=3 uid="uid://ciurcm0h2qan6"]
+[ext_resource type="PackedScene" path="res://scenes/menus/MainMenu.tscn" id="1"]
+[node name="Main" type="Node"]
+[node name="MainMenu" parent="." instance=ExtResource("1")]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://chuduid001"]
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1"]
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1")
+[node name="Margin" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+[node name="HBox" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 22
+[node name="LivesLabel" type="Label" parent="Margin/HBox"]
+text = "Vies 3"
+[node name="CoinsLabel" type="Label" parent="Margin/HBox"]
+text = "Pieces 0"
+[node name="StarsLabel" type="Label" parent="Margin/HBox"]
+text = "Etoiles 0/3"
+[node name="LevelLabel" type="Label" parent="Margin/HBox"]
+size_flags_horizontal = 6
+text = "Niveau 1"
+[node name="TimerLabel" type="Label" parent="Margin/HBox"]
+size_flags_horizontal = 10
+text = "00:00.00"

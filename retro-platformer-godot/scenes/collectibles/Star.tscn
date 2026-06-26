@@ -1,3 +1,35 @@
-[gd_scene format=3 uid="uid://cls1ilx37c8qe"]
+[gd_scene load_steps=11 format=3 uid="uid://cls1ilx37c8qe"]
 
-[node name="Star" type="Node2D" unique_id=359282232]
+[ext_resource type="Script" path="res://scenes/collectibles/star.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/star.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="s0"] atlas=ExtResource("2") region=Rect2(0,0,16,16)
+[sub_resource type="AtlasTexture" id="s1"] atlas=ExtResource("2") region=Rect2(16,0,16,16)
+[sub_resource type="AtlasTexture" id="s2"] atlas=ExtResource("2") region=Rect2(32,0,16,16)
+[sub_resource type="AtlasTexture" id="s3"] atlas=ExtResource("2") region=Rect2(48,0,16,16)
+[sub_resource type="AtlasTexture" id="s4"] atlas=ExtResource("2") region=Rect2(64,0,16,16)
+[sub_resource type="AtlasTexture" id="s5"] atlas=ExtResource("2") region=Rect2(80,0,16,16)
+
+[sub_resource type="SpriteFrames" id="SF"]
+animations = [{"frames":[
+{"duration":1.0,"texture":SubResource("s0")},{"duration":1.0,"texture":SubResource("s1")},
+{"duration":1.0,"texture":SubResource("s2")},{"duration":1.0,"texture":SubResource("s3")},
+{"duration":1.0,"texture":SubResource("s4")},{"duration":1.0,"texture":SubResource("s5")}
+],"loop":true,"name":"shine","speed":8.0}]
+
+[sub_resource type="CircleShape2D" id="C"]
+radius = 11.0
+
+[node name="Star" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.0, 2.0)
+sprite_frames = SubResource("SF")
+animation = "shine"
+autoplay = "shine"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("C")
